@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí sách</title>
+    <link rel="stylesheet" href="quanlisach.css">
+    <link rel="stylesheet" href="themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="https://www.utc.edu.vn/assets/utc/images/logo.png" alt="">
+        <div class="userinfo">
+            <p>Welcome, User</p>
+            <a href="">Đăng xuất</a>
+        </div>
+        <nav>
+            <ul>
+                <li class = "thispage"><a href="" >QUẢN LÝ SÁCH</a></li>
+                <li><a href="">LOẠI SÁCH</a></li>
+                <li><a href="">QUẢN LÝ MƯỢN TRẢ</a></li>
+                <li><a href="">QUẢN LÝ SINH VIÊN</a></li>
+            </ul>
+        </nav>
+        <div class="filter">
+            <div id="searchbook">
+                <input type="text" id="filterName" placeholder="Search">
+                <div id="searchResult"></div>
+            </div>
+            <button class="js-open">+ Thêm sách</button>
+            <p style="display: inline-block;"><i class="ti-layout-grid3 menu-grid"></i></p>
+            <p style="display: inline-block"><i class="ti-menu menu-grid" style="display: none;"></i></p>
+        </div>
+    </header>
+    <div class="modal">
+        <div class="modal-container">
+            <div class="modal-close">
+                <i class="ti-close"></i>
+            </div>
+            <form class="js-form ">
+                <div class="flex flex1">
+                    <div style="width: 35%; text-align: center;">
+                        <img id="previewImage" alt="Uploaded Image">        
+                        <input type="file" id="imageInput" accept="image/*">
+                    </div>
+                    <div class="input_add">
+                        <p class="label">Mã sách: </p>
+                        <input type="text" id="maSach" name="maSach" required>
+                        <br>
+                        <p class="label">Nhà xuất bản: </p>
+                        <input type="text" id="nhaXuatBan" name="nhaXuatBan" required>
+                        <br>
+                        <p class="label">Tiêu đề: </p>
+                        <input type="text" id="tieuDe" name="tieuDe" required>
+                        <br>
+                        <p class="label">Loại sách: </p>
+                        <input type="text" id="loaiSach" name="loaiSach" required>
+                        <br>
+                        <p class="label">Tác giả: </p>
+                        <input type="text" id="tacGia" name="tacGia" required>
+                        <br>
+                        <p class="label">Giá sách: </p>
+                        <input type="text" id="giaSach" name="giaSach" required>
+                        <br>
+                        <p class="label">Tình trạng sách: </p>
+                        <select id="tinhTrang" name="tinhTrang">
+                             <option value=""></option>
+                             <option value="có sẵn">có sẵn</option>
+                             <option value="chờ giao">chờ giao</option>
+                             <option value="đang cho mượn">đang cho mượn</option>
+                         </select>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" style="width: 100px">
+            </form>
+        </div>
+    </div>
+    <table class="danhsach">
+        <tr>
+            <th>Mã sách</th>
+            <th style="max-width: 1000px;">Tiêu đề</th>
+            <th>Tình trạng sách</th>
+            <th>Giá sách</th>
+            <th>Tác giả</th>
+            <th style="color: rgba(0, 0, 0, 0)">Xóa</th>
+        </tr>
+    </table>
+    <div class="danhsach1" id="danhsach">
+    </div>
+    <div class="stat">
+        <div class="stat-container">
+            <div class="stat-close">
+                <i class="ti-close"></i>
+            </div>
+            <div class="flex" style="width: 100%; height: 80%;">
+                <div class="imgcover"><img src="" alt="bìa sách" class = "bcover" id = "cover"></div>
+                <table class="detail">
+                    <tr>
+                        <td class="fit3">
+                            <p>Mã sách:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="scode"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Tên sách:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="sname"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Tác giả:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="sauthor"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Loại sách:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="sgenre"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Nhà xuất bản:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="spublisher"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Giá sách:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="sprice"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fit3">
+                            <p>Tình trạng:</p>
+                        </td>
+                        <td class="fit7">
+                            <div class="sstatus"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="follow">
+            Follow us:
+            <a href="https://www.facebook.com/dhgtvtcaugiay?locale=vi_VN"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+            <p>Địa chỉ: Số 3 phố Cầu Giấy, P.Láng Thượng, Q.Đống Đa, Hà Nội.</p>
+            <p>Điện thoại: (84.24) 37663311</p>
+            <p>Email: dhgtvt@utc.edu.vn</p>
+            <img src="https://www.utc.edu.vn/assets/utc/images/logofooter-gtvt.png" alt="">
+        </div>
+        <div class="app">
+            Download app:
+            <a href="https://play.google.com/store/apps/details?id=vn.edu.utc.eutc&hl=vi-VN"><i class="fa-brands fa-google-play"></i></a>
+            <a href="https://apps.apple.com/vn/app/eutc/id6447959887?l=vi"><i class="fa-brands fa-app-store"></i></a>            
+            <h3>PHÂN HIỆU TẠI THÀNH PHỐ HỒ CHÍ MINH</h3>
+            <p>Địa chỉ: 450-451 Đường Lê Văn Việt, Phường Tăng Nhơn Phú A, TP. Thủ Đức (Quận 9 cũ), TP. Hồ Chí Minh</p>
+            <p>Điện thoại: (84.28) 38966798</p>
+            <p>Email: info@utc2.edu.vn</p>
+            <p>website: <a href="http://phanhieu.utc.edu.vn">http://phanhieu.utc.edu.vn</a></p>
+        </div>
+    </footer>
+    <script src="quanlisach.js"></script>
+</body>
+</html>
